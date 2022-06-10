@@ -1,7 +1,7 @@
 {
+  // 常规属性
+  // tsconfig.json文件是ts编译器的配置文件，ts编译器可以根据这里面的配置进行代码的编译。
   /* 
-    tsconfig.json文件是ts编译器的配置文件，ts编译器可以根据这里面的配置进行代码的编译。
-
     1、include 定义当前需要编译的文件
       注意：
          ** 表示任意目录
@@ -47,6 +47,19 @@
     // noEmit 不生成编译后的文件，默认false
     "noEmit": false,
     // noEmitOnError 当编译中的文件报错的时候，不生成编译后的文件，默认false
-    "noEmitOnError": true
+    "noEmitOnError": true,
+
+
+    // 语法检查相关的属性
+    // 所有的严格检查的总开关，建议设置为true
+    "strict": true,
+    // 用来设置编译后的文件是否开启严格模式，默认false
+    "alwaysStrict": false,
+    // 不允许隐式的any类型
+    "noImplicitAny": false,
+    // 不允许不明类型的this
+    "noImplicitThis": true,
+    // 严格的检查空值
+    "strictNullChecks": true
   }
 }

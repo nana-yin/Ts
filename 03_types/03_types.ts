@@ -103,7 +103,7 @@ s = ['1','2']
 let t : number[];
 t = [1,2]
 // 数值数组
-let  u : Array<string>;
+let u : Array<string>;
 u = ['3','4']
 
 
