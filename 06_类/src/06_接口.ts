@@ -1,54 +1,46 @@
 (function () {
-  /**
-   *  以abstract开头的类是抽象类
-   *    - 抽象类不能创建自身的实例对象
-   *    - 抽象类只能被用来继承
-   *    - 抽象类中可以添加抽象方法
-   */
-  abstract class Animal{
+  // 描述一个对象的生命
+  type myType = {
     name: string;
+    age: number;
+  }
 
+  const obj : myType  = {
+    name: '小红',
+    age: 16
+  }
+  console.log('obj',obj)
+
+  /**
+   * 接口用来定义一个类的结构，主要是用来定义一个类应该包含哪些属性和方法。
+   *  - 接口还可以被当成类型的声明使用
+   *  - 接口可以限制类的结构
+   *      接口中所有的属性都没有实际的值
+   *      接口只定义对象的结构，而不考虑实际的值
+   *      在接口中所有的方法都是抽象方法
+   */
+  interface myInterface {
+    name:string;
+    sayHello():void
+  }
+
+  /**
+   *  定义一个类的时候，可以使类实现一个接口。
+   *    实现接口---》使类满足接口的要求
+  */
+  class inter implements myInterface {
+    name:string;
     constructor(name:string) {
       this.name = name
     }
 
-    // sayHello() {
-    //   console.log('动物在叫')
-    // }
-    /**
-     * 定义一个抽象方法
-     * 抽象方法使用abstract开头，没有方法体
-     * 抽象方法只能定义在抽象类中，子类中必须对抽象方法进行重写。
-     */
-    abstract sayHello():void;
-  }
-
-  class Dog extends Animal {
-    
-    constructor(name:string) {
-      /**
-       * 如果不重写构造函数，在创建实例的时候，会自动调用父类的构造实例。
-       * 如果要重写构造函数，那么父类构造函数的参数一定要带过来，还要在构造函数的首行加super关键字，并且将父类构造函数的参数当做super的参数进行传入。
-      */ 
-      super(name)  // 调用父类的构造函数
-      this.name = '狗狗'
-    }
     sayHello(): void {
-      /**
-       * super表示当前类的父类
-       */
-      // super.sayHello();
-      console.log('汪汪汪')
+      console.log('你好')
     }
   }
-  const dog = new Dog('旺财')
-  console.log('dog', dog)
-  dog.sayHello()
 
+  const interInstance = new inter('小蓝')
+  console.log('interInstance',interInstance)
 
-  // const a = new Animal('旺财') // 会报错
-  // class Cat extends Animal{
-  //   // 会报错，必须要重写sayHello
-  // }
 
 })()
