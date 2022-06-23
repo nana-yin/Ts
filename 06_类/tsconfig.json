@@ -6,6 +6,8 @@
     "module": "ES2015",
     "target": "ES2015",
     "strict": true,
-    "outDir": "./dist"
+    "outDir": "./dist",
+    // 代码中有错误编译不了
+    "noEmitOnError": true
   }
 }
