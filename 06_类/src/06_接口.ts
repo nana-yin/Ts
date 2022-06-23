@@ -1,5 +1,5 @@
 (function () {
-  // 描述一个对象的生命
+  // 描述一个对象的属性
   type myType = {
     name: string;
     age: number;
