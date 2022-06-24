@@ -23,9 +23,35 @@ body {
   border-radius: 16px;
 }
 #stage {
+  position: relative;
   width: 304px;
   height: 304px;
   border: 2px solid #000;
+  #food {
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    width: 10px;
+    height: 10px;
+    &>div {
+      width: 4px;
+      height: 4px;
+      border: 1px solid @bg-color;
+      background-color: #000;
+      transform: rotate(45deg);
+    }
+  }
+  #snake {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    border: 1px solid @bg-color;
+    background-color: #000;
+  }
 }
 #score-panel {
   width: 304px;
