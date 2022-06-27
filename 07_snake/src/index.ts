@@ -1,32 +1,15 @@
 import './styles/index.less'
-
-class Food {
-  element: HTMLElement;
-
-  constructor() {
-    // 加感叹号的含义：表示不用考虑当前的dom元素为空的情况
-    this.element = document.getElementById('food')!;
-  }
-
-  // 获取食物的x位置
-  getX() {
-    return this.element.offsetTop
-  }
-
-  // 获取食物的y位置
-  getY() {
-    return this.element.offsetLeft
-  }
-
-
-  // 更改食物的位置
-  changeFood() {
-    this.element.style.top = '100px'
-    this.element.style.left = '100px'
-  }
-}
+import Food from './modules/food'
+import ScorePanel from './modules/scorePanel'
 
 // 测试用
 const food = new Food()
 food.changeFood()
 console.log('food',food.getX(),food.getY())
+
+
+// 测试用
+const scorePanel = new ScorePanel()
+for(let i =0; i < 200; i++) {
+  scorePanel.addScore()
+}
