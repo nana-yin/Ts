@@ -9,13 +9,13 @@ export default class Food {
   }
 
   // 获取食物的x位置
-  getX() {
-    return this.element.offsetTop
+  get X() {
+    return this.element.offsetLeft;
   }
 
   // 获取食物的y位置
-  getY() {
-    return this.element.offsetLeft
+  get Y() {
+    return this.element.offsetTop;
   }
 
 

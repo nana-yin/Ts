@@ -12,12 +12,15 @@ export default class GameControl {
   snake: Snake;
   // 控制蛇移动的方向
   directionMove: string;
+  // 游戏是否结束
+  isLive: boolean;
 
   constructor() {
     this.food = new Food();
     this.scorePanel = new ScorePanel();
     this.snake = new Snake();
     this.directionMove = 'Right';
+    this.isLive = true
 
     this.init()
   }
@@ -68,12 +71,37 @@ export default class GameControl {
         break;
     }
 
-    // 修改蛇的位置
-    this.snake.snakeHeadX = X
-    this.snake.snakeHeadY = Y
+    // 检查蛇是否吃到食物
+    this.checkSnakeEatFood(X, Y)
+
+    try {
+      // 修改蛇的位置
+      this.snake.snakeHeadX = X
+      this.snake.snakeHeadY = Y
+    } catch (e:any) {
+      alert(e.message + '  GAME OVER！')
+      // 游戏结束标志
+      this.isLive = false
+    }
     
-    setTimeout(() => {
+    this.isLive && setTimeout(() => {
       this.run()
     }, time)
+  }
+
+
+  // 检查蛇是否吃到食物
+  checkSnakeEatFood(X:number, Y:number) {
+    console.log('X', X, this.food.X)
+    console.log('Y', Y, this.food.Y)
+    // 蛇吃到食物之后
+    if ((X === this.food.X) && (Y === this.food.Y)) {
+      // 更改食物的位置
+      this.food.changeFood();
+      // 分数增加
+      this.scorePanel.addScore();
+      // 蛇的身体增加
+      this.snake.addSnakeLength();
+    }
   }
 }
