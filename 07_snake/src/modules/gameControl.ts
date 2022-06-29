@@ -92,8 +92,6 @@ export default class GameControl {
 
   // 检查蛇是否吃到食物
   checkSnakeEatFood(X:number, Y:number) {
-    console.log('X', X, this.food.X)
-    console.log('Y', Y, this.food.Y)
     // 蛇吃到食物之后
     if ((X === this.food.X) && (Y === this.food.Y)) {
       // 更改食物的位置

@@ -1,6 +1,7 @@
 import './styles/index.less'
 import GameControl from './modules/gameControl'
-const gameControl = new GameControl()
+new GameControl()
+// const gameControl = new GameControl()
 // gameControl.init()
 // import Food from './modules/food'
 // import ScorePanel from './modules/scorePanel'
