@@ -45,12 +45,16 @@ body {
       transform: rotate(45deg);
     }
   }
+  // 设置蛇
   #snake {
-    position: absolute;
-    width: 4px;
-    height: 4px;
-    border: 1px solid @bg-color;
-    background-color: #000;
+    // 蛇的身体
+    &>div {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border: 1px solid @bg-color;
+      background-color: #000;
+    }
   }
 }
 #score-panel {

@@ -6,31 +6,30 @@ export default class Snack{
   // 蛇的身体元素
   snakeBodyEl: HTMLCollection;
 
-
   constructor() {
     this.snakeEl = document.getElementById('snake')!;
-    this.snakeHeadEl = this.snakeEl.querySelector('#snake > div')! as HTMLElement;
+    this.snakeHeadEl = this.snakeEl.querySelector('#snake > div') as HTMLElement;
     this.snakeBodyEl = this.snakeEl.getElementsByTagName('div');
   }
 
   // 获取蛇头的x的位置
-  getSnakeHeadX() {
-    return this.snakeHeadEl.offsetLeft
+  get snakeHeadX() {
+    return this.snakeHeadEl.offsetLeft;
   }
 
   // 获取蛇头的y的位置
-  getSnakeHeadY() {
-    return this.snakeHeadEl.offsetTop
+  get snakeHeadY() {
+    return this.snakeHeadEl.offsetTop;
   }
 
   // 设置蛇头的x的位置
-  setSnakeHeadX() {
-    this.snakeHeadEl.style.left = this.snakeHeadEl.offsetLeft +'px'
+  set snakeHeadX(value:number) {
+    this.snakeHeadEl.style.left = value + 'px';
   }
 
   // 设置蛇头的y的位置
-  setSnakeHeadY() {
-    this.snakeHeadEl.style.top = this.snakeHeadEl.offsetTop +'px'
+  set snakeHeadY(value:number) {
+    this.snakeHeadEl.style.top = value + 'px';
   }
 
   // 增加蛇的长度
