@@ -28,12 +28,6 @@ export default class Snack{
     if(this.snakeHeadX === value) {
       return;
     }
-
-    // X值的合法范围： 0-290  检查蛇是否撞墙
-    if (value < 0 || value > 290) {
-      throw new Error('蛇撞墙了！')
-    }
-
     /**
      * 检查蛇是否会在水平位置往回走
      *   如果蛇一开始是向右走，想要水平向左走的话：
@@ -52,11 +46,17 @@ export default class Snack{
       }
     }
 
-    // 检查蛇是否撞到了自己
 
+    // X值的合法范围： 0-290  检查蛇是否撞墙
+    if (value < 0 || value > 290) {
+      throw new Error('蛇撞墙了！')
+    }
 
     // 将蛇的头部和身体进行拼接，并且移动
     this.headJoinBody()
+
+    // 检查蛇是否撞到了自己
+    this.checkHeadBumpBody()
 
     // 更改蛇头的坐标
     this.snakeHeadEl.style.left = value + 'px';
@@ -64,17 +64,10 @@ export default class Snack{
 
   // 设置蛇头的y的位置
   set snakeHeadY(value:number) {
-
     // 如果蛇头的位置和要更改的位置一样，则返回
     if(this.snakeHeadY === value) {
       return;
     }
-
-    // Y值的合法范围： 0-290  检查蛇是否撞墙
-    if (value < 0 || value > 290) {
-      throw new Error('蛇撞墙了！')
-    }
-
     /**
      * 检查蛇是否会在垂直位置往回走
      *   如果蛇一开始是向上走，想要向下走的话：
@@ -93,9 +86,16 @@ export default class Snack{
       }
     }
 
+    // Y值的合法范围： 0-290  检查蛇是否撞墙
+    if (value < 0 || value > 290) {
+      throw new Error('蛇撞墙了！')
+    }
 
     // 将蛇的头部和身体进行拼接，并且移动
     this.headJoinBody()
+
+    // 检查蛇是否撞到了自己
+    this.checkHeadBumpBody()
 
     // 更改蛇头的坐标
     this.snakeHeadEl.style.top = value + 'px';
@@ -127,6 +127,17 @@ export default class Snack{
       // 将值赋值要当前的身体上
       (this.snakeBodyEl[i] as HTMLElement).style.left = X + 'px';
       (this.snakeBodyEl[i] as HTMLElement).style.top = Y + 'px';
+    }
+  }
+
+  // 检查蛇是否撞到了自己
+  checkHeadBumpBody() {
+    for (let i = 1; i < this.snakeBodyEl.length; i++) {
+      let X = (this.snakeBodyEl[i] as HTMLElement).offsetLeft;
+      let Y = (this.snakeBodyEl[i] as HTMLElement).offsetTop;
+      if ((this.snakeHeadX === X) && (this.snakeHeadY === Y)) {
+        throw new Error('蛇撞到自己了！')
+      }
     }
   }
 }
